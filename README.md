@@ -17,5 +17,5 @@ Program ini mengimplementasikan algoritma kompresi gambar menggunakan struktur d
 4. Type java -cp bin Main
 
 ## Author
-13523143 - Amira Izani
-13523157 - Natalia Desiany Nursimin
+- 13523143 - Amira Izani
+- 13523157 - Natalia Desiany Nursimin
