@@ -12,7 +12,7 @@ public class ImageCompressor {
             QuadTree tree;
             GIFExporter gif = (gifPath != null && !gifPath.trim().isEmpty()) ? new GIFExporter(gifPath, 500) : null;
 
-            if (targetCompression > 0.0 && targetCompression <= 1.0) {
+            if (targetCompression > 0.0 && targetCompression <= 1.0) { //Jika target kompresi di set
                 double low, high, bestThresh;
 
 
@@ -23,7 +23,7 @@ public class ImageCompressor {
                     }
                     case 2 -> { //MAD
                         low = 0.0;
-                        high = 255;
+                        high = 255.0;
                     }
                     case 3 -> { //Max Pixel Difference
                         low = 0.0;
@@ -34,7 +34,7 @@ public class ImageCompressor {
                         high = 8.0;
                     }
                     case 5 -> { //SSIM
-                        low = 0.0;
+                        low = -1.0; //avoid error
                         high = 1.0;
                     }
                     default -> {
@@ -70,12 +70,21 @@ public class ImageCompressor {
 
                     tempFile.delete();
 
-
-                    if (compressionRatio < targetCompression) {
-                        low = mid;
-                    } else {
-                        high = mid;
-                        bestThresh = mid;
+                    if (method == 5) {
+                        if (compressionRatio > targetCompression) {
+                            low = mid;
+                            bestThresh = mid;
+                        } else {
+                            high = mid;
+                        }
+                    }
+                    else {
+                        if (compressionRatio < targetCompression) {
+                            low = mid;
+                        } else {
+                            high = mid;
+                            bestThresh = mid;
+                        }
                     }
 
                     if (Math.abs(high - low) < epsilon) {

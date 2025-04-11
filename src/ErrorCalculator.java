@@ -14,6 +14,7 @@ public class ErrorCalculator {
         };
     }
 
+    //variance
     public static double variance(BufferedImage img, int x, int y, int width, int height) {
         double[] sum = {0, 0, 0};
         double[] sumSq = {0, 0, 0};
@@ -38,6 +39,7 @@ public class ErrorCalculator {
         return (varR + varG + varB) / 3.0;
     }
 
+    //MAD
     public static double mad(BufferedImage img, int x, int y, int width, int height) {
         double[] mean = {0, 0, 0};
         int n = width * height;
@@ -68,6 +70,7 @@ public class ErrorCalculator {
         return (total[0] + total[1] + total[2]) / (3.0 * n);
     }
 
+    //max pixel difference
     public static double maxDiff(BufferedImage img, int x, int y, int width, int height) {
         int minR = 255, minG = 255, minB = 255;
         int maxR = 0, maxG = 0, maxB = 0;
@@ -88,6 +91,7 @@ public class ErrorCalculator {
         return ((maxR - minR) + (maxG - minG) + (maxB - minB)) / 3.0;
     }
 
+    //entropy
     public static double entropy(BufferedImage img, int x, int y, int width, int height) {
         int[] histogram = new int[256];
         int n = width * height;
@@ -112,7 +116,7 @@ public class ErrorCalculator {
     }
 
 
-
+    //ssim
     public static double structuralSimilarity(BufferedImage image, int x, int y, int width, int height) {
         long r = 0, g = 0, b = 0;
         int total = width * height;

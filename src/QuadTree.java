@@ -41,22 +41,22 @@ public class QuadTree {
             return node;
         }else{
 
-        int hw = w / 2;
-        int hh = h / 2;
+            int hw = w / 2;
+            int hh = h / 2;
 
-        node.children = new Node[4];
-        node.children[0] = buildRecursive(x, y, hw, hh, depth + 1);
-        node.children[1] = buildRecursive(x + hw, y, w - hw, hh, depth + 1);
-        node.children[2] = buildRecursive(x, y + hh, hw, h - hh, depth + 1);
-        node.children[3] = buildRecursive(x + hw, y + hh, w - hw, h - hh, depth + 1);
+            node.children = new Node[4];
+            node.children[0] = buildRecursive(x, y, hw, hh, depth + 1);
+            node.children[1] = buildRecursive(x + hw, y, w - hw, hh, depth + 1);
+            node.children[2] = buildRecursive(x, y + hh, hw, h - hh, depth + 1);
+            node.children[3] = buildRecursive(x + hw, y + hh, w - hw, h - hh, depth + 1);
 
-        return node;}
+            return node;}
     }
 
     private boolean shouldSplit(int x, int y, int w, int h, int minSize) {
         if ((w*h/4) < minSize) return false;
         if (method == 5){
-        return ErrorCalculator.compute(image, x, y, w, h, method) < threshold;
+            return ErrorCalculator.compute(image, x, y, w, h, method) < threshold;
         }
         else{
             return ErrorCalculator.compute(image, x, y, w, h, method) > threshold;
