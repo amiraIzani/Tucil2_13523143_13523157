@@ -12,7 +12,7 @@ Program ini mengimplementasikan algoritma kompresi gambar menggunakan struktur d
    
 ## How To Run
 1. Clone Repository
-2. Open Terminal type cd ./repositoryPath
+2. Open Terminal type cd repositoryPath
 3. Type javac -d bin src/*.java
 4. Type java -cp bin Main
 
